@@ -1,290 +1,203 @@
-# AI Tools
+# MUDListings
 
-A collection of AI prompt templates for structured software development, content creation, and design workflows. These prompts guide AI assistants through a systematic **Research → Create → Generate → Execute** process.
+A modern platform for discovering, reviewing, and managing MUD (Multi-User Dungeon) game listings. Built with .NET 10 and React 19.
 
-## Overview
+## What is a MUD?
 
-This toolkit helps you break down complex projects into manageable pieces by:
+MUDs (Multi-User Dungeons) are text-based multiplayer online games that predate modern MMORPGs. Players connect via telnet or specialized clients to explore virtual worlds, complete quests, and interact with other players—all through text commands and descriptions.
 
-1. **Researching** the landscape (codebase, best practices, constraints) before writing requirements
-2. **Creating** detailed requirement documents (PRD, CRD, or DRD) informed by research
-3. **Generating** actionable task lists from those requirements
-4. **Executing** tasks one-by-one with built-in checkpoints
+## Features
 
-All outputs are saved to a `/tasks` directory for tracking and reference.
+### For Players
+- **Browse & Search** - Discover MUDs with powerful filtering by genre, play style, and status
+- **Real-time Status** - See which MUDs are online and current player counts
+- **Reviews & Ratings** - Read community reviews and share your experiences
+- **Favorites** - Save MUDs to your personal collection
+- **Activity Feed** - Stay updated on new listings, reviews, and trending games
 
-## Workflow
+### For MUD Administrators
+- **Claim Your MUD** - Verify ownership and manage your listing
+- **Rich Profiles** - Add descriptions, screenshots, features, and connection details
+- **Analytics** - Track views, favorites, and player trends
+- **Review Responses** - Engage with player feedback
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        RESEARCH PHASE                           │
-│  Gather context before writing requirements:                    │
-│  • Internal: codebase, existing docs, patterns, constraints     │
-│  • External: best practices, reference implementations          │
-│  • Output: Research Summary Document (RSD)                      │
-└─────────────────────────────────────────────────────────────────┘
-                              ↓
-┌─────────────────────────────────────────────────────────────────┐
-│                         CREATE PHASE                            │
-│  Choose the appropriate requirements document:                  │
-│  • PRD (Product) - Features & functionality                     │
-│  • CRD (Content) - Copy, messaging, articles                    │
-│  • DRD (Design)  - UI, visuals, components                      │
-└─────────────────────────────────────────────────────────────────┘
-                              ↓
-┌─────────────────────────────────────────────────────────────────┐
-│                        GENERATE PHASE                           │
-│  Convert requirements into a structured task list               │
-│  • Parent tasks with sub-tasks                                  │
-│  • Relevant files identified                                    │
-│  • Checkboxes for progress tracking                             │
-└─────────────────────────────────────────────────────────────────┘
-                              ↓
-┌─────────────────────────────────────────────────────────────────┐
-│                        EXECUTE PHASE                            │
-│  Work through tasks systematically                              │
-│  • One sub-task at a time                                       │
-│  • User approval between steps                                  │
-│  • Auto-commit on parent task completion                        │
-└─────────────────────────────────────────────────────────────────┘
-```
+### For Site Admins
+- **Content Moderation** - Review queue for flagged content
+- **Featured Management** - Curate highlighted MUDs
+- **Bulk Import** - Import MUD listings from JSON/CSV
+- **Audit Logging** - Track all administrative actions
 
-## Prompt Files
+## Tech Stack
 
-| File | Purpose | Output |
-|------|---------|--------|
-| `research.md` | Research Summary Document | `tasks/rsd-[project-name]-[version].md` |
-| `create-prd.md` | Product Requirements Document | `tasks/prd-[feature-name]-[version].md` |
-| `create-crd.md` | Content Requirements Document | `tasks/crd-[content-name]-[version].md` |
-| `create-drd.md` | Design Requirements Document | `tasks/drd-[design-name]-[version].md` |
-| `generate-tasks.md` | Task list generation | `tasks/tasks-[feature-name].md` |
-| `execute-tasks.md` | Task execution guidelines | Updates the task list in place |
+### Backend
+- **.NET 10** with ASP.NET Core Web API
+- **Clean Architecture** - Domain, Application, Infrastructure, API layers
+- **Entity Framework Core** with PostgreSQL
+- **MediatR** for CQRS pattern
+- **JWT Authentication** with refresh tokens
 
-## Usage
+### Frontend
+- **React 19** with TypeScript
+- **Vite 7** for fast builds
+- **Tailwind CSS v4** with CSS variables
+- **shadcn/ui** components (New York style)
+- **TanStack Query** for server state
+- **Zustand** for client state
+- **React Router v7** with lazy loading
 
-### Step 0: Research (Recommended First Step)
+### Infrastructure
+- **Docker** with multi-stage builds
+- **nginx** for production serving
+- **GitHub Actions** CI/CD pipeline
 
-Before writing requirements, use `research.md` to gather context about your project. This ensures your requirements are grounded in reality—existing patterns, technical constraints, and best practices.
-
-**Example:**
-
-NOTE: Most AI tools allow you to directly reference your file with the "@" preface. But, if not, you can paste in the contents as stated below.
+## Project Structure
 
 ```
-[Paste contents of research.md]
-
-I want to add a user authentication system with email/password login and OAuth support.
+mudlistings/
+├── src/
+│   ├── MudListings.Api/           # ASP.NET Core Web API
+│   ├── MudListings.Application/   # CQRS commands, queries, DTOs
+│   ├── MudListings.Domain/        # Entities and domain logic
+│   ├── MudListings.Infrastructure/# EF Core, repositories, services
+│   └── MudListings.Tests/         # Unit tests
+├── web/                           # React frontend
+│   ├── src/
+│   │   ├── components/            # UI components
+│   │   ├── hooks/                 # TanStack Query hooks
+│   │   ├── pages/                 # Route pages
+│   │   ├── stores/                # Zustand stores
+│   │   └── types/                 # TypeScript types
+│   ├── Dockerfile
+│   └── nginx.conf
+└── .github/workflows/             # CI/CD pipelines
 ```
 
-The AI will:
-1. Ask 4-7 clarifying questions about research scope, depth, and focus
-2. Analyze internal codebase for existing patterns, constraints, and reusable components
-3. Research external best practices, reference implementations, and standards
-4. Generate a Research Summary Document (RSD)
-5. Save it to `/tasks/rsd-user-auth-v1.md`
+## Getting Started
 
-The RSD includes:
-- Existing context and assets in your codebase
-- Best practices and reference implementations
-- Constraints, risks, and dependencies
-- Recommendations for which requirements doc to create next
+### Prerequisites
+- .NET 10 SDK
+- Node.js 20+
+- PostgreSQL 15+
+- Docker (optional)
 
-### Step 1: Create a Requirements Document
+### Backend Setup
 
-Copy the contents of the appropriate `create-*.md` file into your AI assistant, then describe what you want to build. Reference your RSD if you completed the research phase.
+```bash
+# Navigate to API project
+cd src/MudListings.Api
 
-**Example - Creating a PRD:**
+# Update connection string in appsettings.Development.json
 
-```
-[Paste contents of create-prd.md]
+# Run migrations
+dotnet ef database update
 
-Based on the research in tasks/rsd-user-auth-v1.md, I want to add a user authentication system with email/password login and OAuth support.
+# Start the API
+dotnet run
 ```
 
-The AI will:
-1. Ask 3-5 clarifying questions with multiple-choice options
-2. Generate a detailed requirements document
-3. Save it to `/tasks/prd-user-auth-v1.md`
+The API will be available at `https://localhost:5001`
 
-**Example - Creating a CRD:**
+### Frontend Setup
 
-```
-[Paste contents of create-crd.md]
+```bash
+# Navigate to web directory
+cd web
 
-I need onboarding email copy for new users who sign up for our SaaS product.
-```
+# Install dependencies
+npm install
 
-**Example - Creating a DRD:**
+# Create environment file
+echo "VITE_API_URL=https://localhost:5001/api" > .env.local
 
-```
-[Paste contents of create-drd.md]
-
-Design a settings page with toggles for notifications, theme preferences, and account management.
+# Start development server
+npm run dev
 ```
 
-### Step 2: Generate Tasks
+The app will be available at `http://localhost:5173`
 
-Once you have a requirements document, use `generate-tasks.md` to create an actionable task list.
+### Docker
 
-**Example:**
-
-```
-[Paste contents of generate-tasks.md]
-
-Generate tasks based on: tasks/prd-user-auth-v1.md
+```bash
+# Build and run with Docker Compose
+docker-compose up --build
 ```
 
-The AI will:
-1. Analyze the requirements document
-2. Generate high-level parent tasks (including "Create feature branch")
-3. Wait for your approval ("Go")
-4. Break down each parent into detailed sub-tasks
-5. Identify relevant files to create/modify
-6. Save to `/tasks/tasks-user-auth.md`
+## Development
 
-**Sample output structure:**
+### Running Tests
 
-```markdown
-## Tasks
+```bash
+# Backend tests
+cd src/MudListings.Tests
+dotnet test
 
-- [ ] 0.0 Create feature branch
-  - [ ] 0.1 Create and checkout `feature/user-auth`
-- [ ] 1.0 Set up authentication database schema
-  - [ ] 1.1 Create users table migration
-  - [ ] 1.2 Add email and password_hash columns
-  - [ ] 1.3 Create sessions table migration
-- [ ] 2.0 Implement email/password authentication
-  - [ ] 2.1 Create signup endpoint
-  - [ ] 2.2 Create login endpoint
-  - [ ] 2.3 Add password hashing utility
-...
+# Frontend tests
+cd web
+npm test
+
+# Frontend tests with coverage
+npm run test:coverage
 ```
 
-### Step 3: Execute Tasks
+### Code Quality
 
-Use `execute-tasks.md` to work through the task list systematically.
+```bash
+# Frontend linting
+cd web
+npm run lint
 
-**Example:**
-
-```
-[Paste contents of execute-tasks.md]
-
-Execute the tasks in: tasks/tasks-user-auth.md
-```
-
-The AI will:
-1. Read the task list and find the next uncompleted sub-task
-2. Implement that sub-task
-3. Mark it complete (`[x]`)
-4. **Stop and wait for your approval** before continuing
-5. Commit and push when a parent task is fully complete
-
-**Interaction flow:**
-
-```
-AI: I've completed sub-task 1.1 (Create users table migration).
-    Ready for the next sub-task?
-
-You: y
-
-AI: Working on sub-task 1.2 (Add email and password_hash columns)...
+# Frontend type checking
+npx tsc --noEmit
 ```
 
-## Corporate Standards (Team Scaling)
+## API Endpoints
 
-The `/standards/` directory contains organizational standards that ensure consistency across team members. When rolling this out to a team:
+### Authentication
+- `POST /api/auth/register` - Create account
+- `POST /api/auth/login` - Sign in
+- `POST /api/auth/refresh` - Refresh tokens
+- `POST /api/auth/forgot-password` - Request password reset
+- `POST /api/auth/reset-password` - Reset password
 
-### Standards Structure
+### MUDs
+- `GET /api/muds` - Search/list MUDs
+- `GET /api/muds/{slug}` - Get MUD details
+- `GET /api/muds/featured` - Featured MUDs
+- `GET /api/muds/trending` - Trending MUDs
+- `GET /api/muds/{id}/status` - Current status
 
-```
-standards/
-├── standards-manifest.yml    # Central config + version
-├── README.md                 # How to use standards
-├── global/                   # Apply to ALL phases
-│   ├── principles.md         # Core values
-│   ├── security-privacy.md   # Security rules
-│   ├── accessibility.md      # A11y requirements
-│   └── terminology.md        # Approved terms
-├── domains/                  # Domain-specific
-│   ├── code-architecture.md  # Code standards
-│   ├── content-voice.md      # Voice/tone
-│   └── design-ui.md          # Design system
-├── phases/                   # Phase-specific
-│   └── [phase].md            # Per-phase rules
-└── teams/                    # Team overlays
-    └── [team].md             # Team-specific
-```
+### Reviews
+- `GET /api/muds/{id}/reviews` - Get reviews
+- `POST /api/muds/{id}/reviews` - Create review
+- `PUT /api/reviews/{id}` - Update review
+- `DELETE /api/reviews/{id}` - Delete review
 
-### How Standards Work
+### Favorites
+- `POST /api/muds/{id}/favorite` - Toggle favorite
+- `GET /api/users/me/favorites` - Get my favorites
 
-1. **Each prompt file references applicable standards** from `/standards/`
-2. **AI outputs include compliance info** (version, applied rules, deviations)
-3. **Teams customize** by editing standard files or adding team overlays
-4. **Version control** tracks changes centrally
+## Design
 
-### Getting Started with Standards
+The UI follows a Linear-inspired aesthetic:
+- Dark mode as primary theme
+- Muted colors with subtle gradients
+- Generous whitespace
+- Keyboard-first interactions (Cmd+K command palette)
 
-1. **Review and customize** `/standards/global/` for your organization
-2. **Update domain standards** in `/standards/domains/` for your tech stack and brand
-3. **Distribute** the entire repo to your team
-4. **Update centrally** and pull changes to keep everyone aligned
+## Contributing
 
-See `/standards/README.md` for detailed setup instructions.
-
-## Quick Reference
-
-| What you want to do | Use this file |
-|---------------------|---------------|
-| Research before requirements | `research.md` |
-| Plan a new feature | `create-prd.md` |
-| Plan content/copy | `create-crd.md` |
-| Plan a design | `create-drd.md` |
-| Break requirements into tasks | `generate-tasks.md` |
-| Execute tasks step-by-step | `execute-tasks.md` |
-| Customize team standards | `/standards/` directory |
-
-## Directory Structure
-
-```
-ai-tools/
-├── README.md
-├── research.md          # Research summary template (Step 0)
-├── create-prd.md        # Product requirements template
-├── create-crd.md        # Content requirements template
-├── create-drd.md        # Design requirements template
-├── generate-tasks.md    # Task generation rules
-├── execute-tasks.md     # Task execution rules
-├── standards/           # Corporate standards (for teams)
-│   ├── standards-manifest.yml
-│   ├── README.md
-│   ├── global/          # Global standards
-│   ├── domains/         # Domain-specific standards
-│   ├── phases/          # Phase-specific standards
-│   └── teams/           # Team overlays
-└── tasks/               # Output directory (created automatically)
-    ├── rsd-*.md         # Research summary docs
-    ├── prd-*.md         # Product requirement docs
-    ├── crd-*.md         # Content requirement docs
-    ├── drd-*.md         # Design requirement docs
-    └── tasks-*.md       # Generated task lists
-```
-
-## Tips
-
-- **Start with research**: The Research phase surfaces constraints and patterns early, leading to better requirements
-- **Customize your standards**: Edit `/standards/` files to match your organization's conventions before team rollout
-- **Version your documents**: All docs are versioned (`-v1`, `-v2`) so you can iterate without losing history
-- **Don't skip the clarifying questions**: They help produce more accurate research and requirements
-- **Review parent tasks before proceeding**: Say "Go" only when the high-level plan looks right
-- **Take your time during execution**: The pause-and-approve pattern prevents runaway changes
-- **Keep the task file updated**: It serves as documentation of what was done
-- **Document deviations**: When you must deviate from standards, document why in your PR
-
-## Credits
-
-Huge credits to Ryan Carson (ryancarson.com) who did most of this foundational work, and his demo on the "How I AI" podcast for lighting me on fire for this stuff.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-MIT
-# mudlistings
+This project is proprietary. All rights reserved.
+
+## Acknowledgments
+
+- The MUD community for keeping text-based gaming alive
+- [shadcn/ui](https://ui.shadcn.com/) for the beautiful component library
+- [Linear](https://linear.app/) for design inspiration
