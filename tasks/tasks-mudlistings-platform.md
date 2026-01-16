@@ -222,44 +222,44 @@ Update the file after completing each sub-task, not just after completing an ent
 
 ### 2.0 Domain layer & database (traces to: FR-1 to FR-6)
 
-- [ ] 2.1 Create domain entities
-  - [ ] 2.1.1 Create `Mud` entity with all fields (name, description, host, port, website, established date, etc.)
-  - [ ] 2.1.2 Create `Genre` enum with values: Fantasy, SciFi, Horror, Roleplay, PvP, Social, Educational, Historical, Superhero, Custom
-  - [ ] 2.1.3 Create `MudGenre` join entity for many-to-many relationship
-  - [ ] 2.1.4 Create `User` entity extending IdentityUser (display name, avatar, role, profile settings)
-  - [ ] 2.1.5 Create `UserRole` enum: Anonymous, Player, MudAdmin, SiteAdmin
-  - [ ] 2.1.6 Create `Review` entity (mud reference, user reference, rating 1-5, title, body, timestamps)
-  - [ ] 2.1.7 Create `ReviewHelpful` entity for helpful votes
-  - [ ] 2.1.8 Create `ReviewReply` entity for admin replies
-  - [ ] 2.1.9 Create `Favorite` entity (user-mud relationship)
-  - [ ] 2.1.10 Create `ActivityEvent` entity (type, user, mud, timestamp, metadata JSON)
-  - [ ] 2.1.11 Create `ActivityEventType` enum: NewListing, NewReview, StatusChange, Featured
-  - [ ] 2.1.12 Create `MudAdmin` entity for ownership claims (user, mud, verified, verification code)
-  - [ ] 2.1.13 Create `MudStatus` entity for MSSP snapshots (mud, player count, uptime, timestamp)
+- [x] 2.1 Create domain entities
+  - [x] 2.1.1 Create `Mud` entity with all fields (name, description, host, port, website, established date, etc.)
+  - [x] 2.1.2 Create `Genre` enum with values: Fantasy, SciFi, Horror, Roleplay, PvP, Social, Educational, Historical, Superhero, Custom
+  - [x] 2.1.3 Create `MudGenre` join entity for many-to-many relationship
+  - [x] 2.1.4 Create `User` entity extending IdentityUser (display name, avatar, role, profile settings)
+  - [x] 2.1.5 Create `UserRole` enum: Anonymous, Player, MudAdmin, SiteAdmin
+  - [x] 2.1.6 Create `Review` entity (mud reference, user reference, rating 1-5, title, body, timestamps)
+  - [x] 2.1.7 Create `ReviewHelpful` entity for helpful votes
+  - [x] 2.1.8 Create `ReviewReply` entity for admin replies
+  - [x] 2.1.9 Create `Favorite` entity (user-mud relationship)
+  - [x] 2.1.10 Create `ActivityEvent` entity (type, user, mud, timestamp, metadata JSON)
+  - [x] 2.1.11 Create `ActivityEventType` enum: NewListing, NewReview, StatusChange, Featured
+  - [x] 2.1.12 Create `MudAdmin` entity for ownership claims (user, mud, verified, verification code)
+  - [x] 2.1.13 Create `MudStatus` entity for MSSP snapshots (mud, player count, uptime, timestamp)
 
-- [ ] 2.2 Create value objects
-  - [ ] 2.2.1 Create `ConnectionInfo` value object (host, port, web client URL)
-  - [ ] 2.2.2 Create `MsspData` value object (players, uptime, game name, protocols)
-  - [ ] 2.2.3 Create `Rating` value object (average, count) with calculation logic
+- [x] 2.2 Create value objects
+  - [x] 2.2.1 Create `ConnectionInfo` value object (host, port, web client URL)
+  - [x] 2.2.2 Create `MsspData` value object (players, uptime, game name, protocols)
+  - [x] 2.2.3 Create `Rating` value object (average, count) with calculation logic
 
-- [ ] 2.3 Configure EF Core DbContext
-  - [ ] 2.3.1 Create `AppDbContext` in Infrastructure with DbSets for all entities
-  - [ ] 2.3.2 Configure entity relationships (one-to-many, many-to-many)
-  - [ ] 2.3.3 Configure value object mappings (owned types)
-  - [ ] 2.3.4 Add indexes for search optimization (name, genre, status)
-  - [ ] 2.3.5 Configure soft delete for Mud and Review entities
-  - [ ] 2.3.6 Add audit fields (CreatedAt, UpdatedAt) to base entity
+- [x] 2.3 Configure EF Core DbContext
+  - [x] 2.3.1 Create `AppDbContext` in Infrastructure with DbSets for all entities
+  - [x] 2.3.2 Configure entity relationships (one-to-many, many-to-many)
+  - [x] 2.3.3 Configure value object mappings (owned types)
+  - [x] 2.3.4 Add indexes for search optimization (name, genre, status)
+  - [x] 2.3.5 Configure soft delete for Mud and Review entities
+  - [x] 2.3.6 Add audit fields (CreatedAt, UpdatedAt) to base entity
 
-- [ ] 2.4 Create and apply migrations
-  - [ ] 2.4.1 Generate initial migration: `dotnet ef migrations add InitialCreate`
-  - [ ] 2.4.2 Review migration SQL for correctness
-  - [ ] 2.4.3 Apply migration to development database: `dotnet ef database update`
-  - [ ] 2.4.4 Seed Genre lookup data
+- [x] 2.4 Create and apply migrations
+  - [x] 2.4.1 Generate initial migration: `dotnet ef migrations add InitialCreate`
+  - [x] 2.4.2 Review migration SQL for correctness
+  - [x] 2.4.3 Apply migration to development database: `dotnet ef database update`
+  - [x] 2.4.4 Seed Genre lookup data
 
-- [ ] 2.5 Write domain layer tests
-  - [ ] 2.5.1 Write unit tests for `Rating` value object calculations
-  - [ ] 2.5.2 Write unit tests for entity validation logic
-  - [ ] 2.5.3 Write unit tests for `MsspData` parsing
+- [x] 2.5 Write domain layer tests
+  - [x] 2.5.1 Write unit tests for `Rating` value object calculations
+  - [x] 2.5.2 Write unit tests for entity validation logic
+  - [x] 2.5.3 Write unit tests for `MsspData` parsing
 
 ---
 
