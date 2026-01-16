@@ -1,0 +1,290 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Base layer for custom properties and resets */
+@layer base {
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@theme inline {
+  /* Typography */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
+  --radius-4xl: 24px;
+
+  /* Map CSS variables to Tailwind */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Semantic colors */
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+
+  /* Chart colors */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar colors */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*
+ * MudListings Design System
+ * Dark theme primary (matches Figma designs)
+ */
+:root {
+  /* This is a dark-first design, so :root has dark values */
+  --radius: 8px;
+
+  /* Backgrounds - Deep navy/dark */
+  --background: #0a0a0f;
+  --foreground: #ffffff;
+
+  /* Cards - Slightly elevated */
+  --card: #141420;
+  --card-foreground: #ffffff;
+
+  /* Popovers/Dropdowns */
+  --popover: #141420;
+  --popover-foreground: #ffffff;
+
+  /* Primary - Purple/Indigo accent */
+  --primary: #6366f1;
+  --primary-foreground: #ffffff;
+
+  /* Secondary */
+  --secondary: #1e1e2e;
+  --secondary-foreground: #ffffff;
+
+  /* Muted */
+  --muted: #27272a;
+  --muted-foreground: #71717a;
+
+  /* Accent */
+  --accent: #1e1e2e;
+  --accent-foreground: #ffffff;
+
+  /* Destructive */
+  --destructive: #ef4444;
+
+  /* Borders - Subtle transparency */
+  --border: rgba(255, 255, 255, 0.1);
+  --input: #1a1a2e;
+  --ring: #6366f1;
+
+  /* Semantic colors */
+  --success: #22c55e;
+  --warning: #f97316;
+  --info: #3b82f6;
+
+  /* Chart colors */
+  --chart-1: #6366f1;
+  --chart-2: #22c55e;
+  --chart-3: #f97316;
+  --chart-4: #06b6d4;
+  --chart-5: #a855f7;
+
+  /* Sidebar */
+  --sidebar: #0d0d14;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #6366f1;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1e1e2e;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #6366f1;
+}
+
+/* Light mode override (optional - design is dark-first) */
+.light {
+  --background: #ffffff;
+  --foreground: #0a0a0f;
+  --card: #f4f4f5;
+  --card-foreground: #0a0a0f;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0f;
+  --primary: #6366f1;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #0a0a0f;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #0a0a0f;
+  --destructive: #ef4444;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: #f4f4f5;
+  --ring: #6366f1;
+  --sidebar: #f4f4f5;
+  --sidebar-foreground: #0a0a0f;
+  --sidebar-primary: #6366f1;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e4e4e7;
+  --sidebar-accent-foreground: #0a0a0f;
+  --sidebar-border: rgba(0, 0, 0, 0.1);
+  --sidebar-ring: #6366f1;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Custom utility classes for MudListings */
+@layer utilities {
+  /* Gradient text for hero */
+  .text-gradient-hero {
+    background: linear-gradient(to right, #ffffff, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Background glow effect */
+  .bg-glow-purple {
+    background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+  }
+
+  /* Status indicator pulse */
+  .animate-pulse-status {
+    animation: pulse-status 2s ease-in-out infinite;
+  }
+
+  /* Card hover glow */
+  .hover-glow {
+    transition: box-shadow 0.2s ease-out;
+  }
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+  }
+
+  /* Star rating color */
+  .text-star {
+    color: #fbbf24;
+  }
+
+  /* Online status */
+  .text-online {
+    color: #22c55e;
+  }
+
+  /* Trending badge */
+  .bg-trending {
+    background-color: #f97316;
+  }
+}
+
+@keyframes pulse-status {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes cursor-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-pulse-status,
+  .animate-spin,
+  .animate-pulse,
+  .animate-bounce {
+    animation: none !important;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground);
+}
+
+/* Focus visible styles */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}

@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="MudListings.Api/MudListings.Api.csproj" />
+  <Project Path="MudListings.Application/MudListings.Application.csproj" />
+  <Project Path="MudListings.Domain/MudListings.Domain.csproj" />
+  <Project Path="MudListings.Infrastructure/MudListings.Infrastructure.csproj" />
+  <Project Path="MudListings.Tests/MudListings.Tests.csproj" />
+</Solution>
