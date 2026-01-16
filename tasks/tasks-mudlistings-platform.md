@@ -174,49 +174,49 @@ Update the file after completing each sub-task, not just after completing an ent
 
 ### 1.0 Project scaffolding & infrastructure setup (traces to: FR-1, Section 7.4)
 
-- [ ] 1.1 Create .NET solution and project structure
-  - [ ] 1.1.1 Create solution file `MudListings.sln` in `src/` directory
-  - [ ] 1.1.2 Create `MudListings.Domain` class library project (.NET 10)
-  - [ ] 1.1.3 Create `MudListings.Application` class library project
-  - [ ] 1.1.4 Create `MudListings.Infrastructure` class library project
-  - [ ] 1.1.5 Create `MudListings.Api` web API project
-  - [ ] 1.1.6 Create `MudListings.Tests` xUnit test project
-  - [ ] 1.1.7 Configure project references (Domain → Application → Infrastructure → Api)
+- [x] 1.1 Create .NET solution and project structure
+  - [x] 1.1.1 Create solution file `MudListings.sln` in `src/` directory
+  - [x] 1.1.2 Create `MudListings.Domain` class library project (.NET 10)
+  - [x] 1.1.3 Create `MudListings.Application` class library project
+  - [x] 1.1.4 Create `MudListings.Infrastructure` class library project
+  - [x] 1.1.5 Create `MudListings.Api` web API project
+  - [x] 1.1.6 Create `MudListings.Tests` xUnit test project
+  - [x] 1.1.7 Configure project references (Domain → Application → Infrastructure → Api)
 
-- [ ] 1.2 Install backend NuGet packages
-  - [ ] 1.2.1 Add EF Core 10, Identity, and SQL Server packages to Infrastructure
-  - [ ] 1.2.2 Add FluentValidation, MediatR to Application
-  - [ ] 1.2.3 Add Serilog, Hangfire, Swagger to Api
-  - [ ] 1.2.4 Add xUnit, FluentAssertions, Moq to Tests
+- [x] 1.2 Install backend NuGet packages
+  - [x] 1.2.1 Add EF Core 10, Identity, and SQL Server packages to Infrastructure
+  - [x] 1.2.2 Add FluentValidation, MediatR to Application
+  - [x] 1.2.3 Add Serilog, Hangfire, Swagger to Api
+  - [x] 1.2.4 Add xUnit, FluentAssertions, Moq to Tests
 
-- [ ] 1.3 Initialize React frontend with Vite
-  - [ ] 1.3.1 Run `npm create vite@latest web -- --template react-ts` in project root
-  - [ ] 1.3.2 Install Tailwind CSS v4 and configure `tailwind.config.ts`
-  - [ ] 1.3.3 Initialize shadcn/ui with `npx shadcn@latest init`
-  - [ ] 1.3.4 Install TanStack Query, Zustand, React Router, Zod, React Hook Form
-  - [ ] 1.3.5 Install Lucide React icons
+- [x] 1.3 Initialize React frontend with Vite
+  - [x] 1.3.1 Run `npm create vite@latest web -- --template react-ts` in project root
+  - [x] 1.3.2 Install Tailwind CSS v4 and configure `tailwind.config.ts`
+  - [x] 1.3.3 Initialize shadcn/ui with `npx shadcn@latest init`
+  - [x] 1.3.4 Install TanStack Query, Zustand, React Router, Zod, React Hook Form
+  - [x] 1.3.5 Install Lucide React icons
 
-- [ ] 1.4 Extract design from Figma prototype (source: https://alert-crush-71468698.figma.site)
-  - [ ] 1.4.1 Review Figma prototype and document all page layouts (homepage, browse, detail, auth, admin)
-  - [ ] 1.4.2 Extract color palette from Figma (primary, secondary, accent, semantic, neutral colors)
-  - [ ] 1.4.3 Extract typography specs from Figma (font families, sizes, weights, line heights)
-  - [ ] 1.4.4 Extract spacing and layout grid specifications from Figma
-  - [ ] 1.4.5 Document component designs from Figma (cards, buttons, inputs, navigation, modals)
-  - [ ] 1.4.6 Capture any animations, transitions, or micro-interactions defined in prototype
-  - [ ] 1.4.7 Export design assets (icons, images, illustrations) from Figma if available
-  - [ ] 1.4.8 Create design tokens document mapping Figma specs to implementation values
+- [x] 1.4 Extract design from Figma prototype (source: https://alert-crush-71468698.figma.site)
+  - [x] 1.4.1 Review Figma prototype and document all page layouts (homepage, browse, detail, auth, admin)
+  - [x] 1.4.2 Extract color palette from Figma (primary, secondary, accent, semantic, neutral colors)
+  - [x] 1.4.3 Extract typography specs from Figma (font families, sizes, weights, line heights)
+  - [x] 1.4.4 Extract spacing and layout grid specifications from Figma
+  - [x] 1.4.5 Document component designs from Figma (cards, buttons, inputs, navigation, modals)
+  - [x] 1.4.6 Capture any animations, transitions, or micro-interactions defined in prototype
+  - [x] 1.4.7 Export design assets (icons, images, illustrations) from Figma if available
+  - [x] 1.4.8 Create design tokens document mapping Figma specs to implementation values
 
-- [ ] 1.5 Configure design tokens from Figma/DRD
-  - [ ] 1.5.1 Map Figma color palette to Tailwind CSS custom properties in `tailwind.config.ts`
-  - [ ] 1.5.2 Configure typography from Figma specs in Tailwind
-  - [ ] 1.5.3 Set up spacing scale per Figma/DRD specifications
-  - [ ] 1.5.4 Configure dark/light mode CSS variables in `index.css` per Figma
+- [x] 1.5 Configure design tokens from Figma/DRD
+  - [x] 1.5.1 Map Figma color palette to Tailwind CSS custom properties in `tailwind.config.ts`
+  - [x] 1.5.2 Configure typography from Figma specs in Tailwind
+  - [x] 1.5.3 Set up spacing scale per Figma/DRD specifications
+  - [x] 1.5.4 Configure dark/light mode CSS variables in `index.css` per Figma
 
-- [ ] 1.6 Set up development environment
-  - [ ] 1.6.1 Configure `appsettings.Development.json` with local connection string
-  - [ ] 1.6.2 Set up Serilog console logging for development
-  - [ ] 1.6.3 Configure CORS for local React dev server (localhost:5173)
-  - [ ] 1.6.4 Add `.env` to `.gitignore`, create `.env.example`
+- [x] 1.6 Set up development environment
+  - [x] 1.6.1 Configure `appsettings.Development.json` with local connection string
+  - [x] 1.6.2 Set up Serilog console logging for development
+  - [x] 1.6.3 Configure CORS for local React dev server (localhost:5173)
+  - [x] 1.6.4 Add `.env` to `.gitignore`, create `.env.example`
 
 ---
 
