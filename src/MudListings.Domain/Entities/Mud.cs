@@ -41,6 +41,7 @@ public class Mud : SoftDeleteEntity
     // Featured/trending
     public bool IsFeatured { get; set; }
     public int? FeaturedOrder { get; set; }
+    public DateTime? FeaturedAt { get; set; }
     public double TrendingScore { get; set; }
 
     // Stats

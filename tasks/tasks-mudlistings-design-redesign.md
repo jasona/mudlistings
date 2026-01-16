@@ -14,6 +14,7 @@ clarifications:
 
 ## Relevant Files
 
+- `design/README.md` - Figma setup guide with page structure and token definitions
 - `design/mudlistings-design-system.fig` - Figma design system file (tokens, components)
 - `design/mudlistings-pages.fig` - Figma page designs (all screens)
 - `design/tokens/colors.json` - Color token export for development
@@ -51,7 +52,7 @@ Update the file after completing each sub-task, not just after completing an ent
   - [x] 0.1 Create and checkout a new branch `git checkout -b design/mudlistings-redesign`
 
 - [ ] 1.0 Set Up Design System Foundation (traces to: DRD Section 4)
-  - [ ] 1.1 Create new Figma file for design system with cover page and table of contents
+  - [x] 1.1 Create new Figma file for design system with cover page and table of contents (see design/README.md for setup guide)
   - [ ] 1.2 Set up color tokens as Figma Variables for dark mode (bg-void, bg-terminal, bg-surface, bg-hover, bg-active)
   - [ ] 1.3 Set up color tokens for text colors (text-primary, text-secondary, text-muted, text-terminal)
   - [ ] 1.4 Set up color tokens for accent colors (accent-primary, accent-glow, accent-terminal, accent-amber, accent-success, accent-error)

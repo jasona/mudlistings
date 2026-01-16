@@ -1,0 +1,15 @@
+namespace MudListings.Application.Common.Settings;
+
+/// <summary>
+/// JWT authentication settings from configuration.
+/// </summary>
+public class JwtSettings
+{
+    public const string SectionName = "Jwt";
+
+    public string Secret { get; set; } = string.Empty;
+    public string Issuer { get; set; } = string.Empty;
+    public string Audience { get; set; } = string.Empty;
+    public int AccessTokenExpirationMinutes { get; set; } = 60;
+    public int RefreshTokenExpirationDays { get; set; } = 7;
+}

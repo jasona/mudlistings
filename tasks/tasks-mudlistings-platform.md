@@ -265,388 +265,388 @@ Update the file after completing each sub-task, not just after completing an ent
 
 ### 3.0 Authentication & user management (traces to: FR-20 to FR-26)
 
-- [ ] 3.1 Configure ASP.NET Identity
-  - [ ] 3.1.1 Add Identity services to DI container in `Program.cs`
-  - [ ] 3.1.2 Configure password requirements and lockout settings
-  - [ ] 3.1.3 Configure JWT token generation settings
-  - [ ] 3.1.4 Create `JwtSettings` options class
+- [x] 3.1 Configure ASP.NET Identity
+  - [x] 3.1.1 Add Identity services to DI container in `Program.cs`
+  - [x] 3.1.2 Configure password requirements and lockout settings
+  - [x] 3.1.3 Configure JWT token generation settings
+  - [x] 3.1.4 Create `JwtSettings` options class
 
-- [ ] 3.2 Implement email/password registration (FR-20)
-  - [ ] 3.2.1 Create `RegisterCommand` with validation (email, password, display name)
-  - [ ] 3.2.2 Create `RegisterCommandHandler` using Identity UserManager
-  - [ ] 3.2.3 Create `POST /api/auth/register` endpoint
-  - [ ] 3.2.4 Generate email verification token on registration
-  - [ ] 3.2.5 Write integration tests for registration flow
+- [x] 3.2 Implement email/password registration (FR-20)
+  - [x] 3.2.1 Create `RegisterCommand` with validation (email, password, display name)
+  - [x] 3.2.2 Create `RegisterCommandHandler` using Identity UserManager
+  - [x] 3.2.3 Create `POST /api/auth/register` endpoint
+  - [x] 3.2.4 Generate email verification token on registration
+  - [x] 3.2.5 Write integration tests for registration flow
 
-- [ ] 3.3 Implement email verification (FR-22)
-  - [ ] 3.3.1 Create `IEmailService` interface in Application layer
-  - [ ] 3.3.2 Implement `EmailService` using SMTP or SendGrid
-  - [ ] 3.3.3 Create email verification template
-  - [ ] 3.3.4 Create `POST /api/auth/verify-email` endpoint
-  - [ ] 3.3.5 Block reviews/claims until email verified
+- [x] 3.3 Implement email verification (FR-22)
+  - [x] 3.3.1 Create `IEmailService` interface in Application layer
+  - [x] 3.3.2 Implement `EmailService` using SMTP or SendGrid
+  - [x] 3.3.3 Create email verification template
+  - [x] 3.3.4 Create `POST /api/auth/verify-email` endpoint
+  - [x] 3.3.5 Block reviews/claims until email verified
 
-- [ ] 3.4 Implement login and JWT tokens
-  - [ ] 3.4.1 Create `LoginCommand` with validation
-  - [ ] 3.4.2 Create `LoginCommandHandler` returning JWT + refresh token
-  - [ ] 3.4.3 Create `POST /api/auth/login` endpoint
-  - [ ] 3.4.4 Create `POST /api/auth/refresh` endpoint for token refresh
-  - [ ] 3.4.5 Write integration tests for login flow
+- [x] 3.4 Implement login and JWT tokens
+  - [x] 3.4.1 Create `LoginCommand` with validation
+  - [x] 3.4.2 Create `LoginCommandHandler` returning JWT + refresh token
+  - [x] 3.4.3 Create `POST /api/auth/login` endpoint
+  - [x] 3.4.4 Create `POST /api/auth/refresh` endpoint for token refresh
+  - [x] 3.4.5 Write integration tests for login flow
 
-- [ ] 3.5 Implement password reset (FR-23)
-  - [ ] 3.5.1 Create `ForgotPasswordCommand` and handler
-  - [ ] 3.5.2 Create `ResetPasswordCommand` and handler
-  - [ ] 3.5.3 Create `POST /api/auth/forgot-password` endpoint
-  - [ ] 3.5.4 Create `POST /api/auth/reset-password` endpoint
-  - [ ] 3.5.5 Create password reset email template
+- [x] 3.5 Implement password reset (FR-23)
+  - [x] 3.5.1 Create `ForgotPasswordCommand` and handler
+  - [x] 3.5.2 Create `ResetPasswordCommand` and handler
+  - [x] 3.5.3 Create `POST /api/auth/forgot-password` endpoint
+  - [x] 3.5.4 Create `POST /api/auth/reset-password` endpoint
+  - [x] 3.5.5 Create password reset email template
 
-- [ ] 3.6 Implement OAuth providers (FR-21)
-  - [ ] 3.6.1 Configure Google OAuth in `Program.cs`
-  - [ ] 3.6.2 Configure Discord OAuth in `Program.cs`
-  - [ ] 3.6.3 Create `POST /api/auth/external/{provider}` endpoint
-  - [ ] 3.6.4 Handle account linking for existing emails
-  - [ ] 3.6.5 Write integration tests for OAuth flow
+- [x] 3.6 Implement OAuth providers (FR-21)
+  - [x] 3.6.1 Configure Google OAuth in `Program.cs`
+  - [x] 3.6.2 Configure Discord OAuth in `Program.cs`
+  - [x] 3.6.3 Create `POST /api/auth/external/{provider}` endpoint
+  - [x] 3.6.4 Handle account linking for existing emails
+  - [x] 3.6.5 Write integration tests for OAuth flow
 
-- [ ] 3.7 Implement role-based access control (FR-26)
-  - [ ] 3.7.1 Create authorization policies: RequirePlayer, RequireMudAdmin, RequireSiteAdmin
-  - [ ] 3.7.2 Add `[Authorize]` attributes to protected endpoints
-  - [ ] 3.7.3 Create role management endpoints for site admins
-  - [ ] 3.7.4 Write tests for authorization policies
+- [x] 3.7 Implement role-based access control (FR-26)
+  - [x] 3.7.1 Create authorization policies: RequirePlayer, RequireMudAdmin, RequireSiteAdmin
+  - [x] 3.7.2 Add `[Authorize]` attributes to protected endpoints
+  - [x] 3.7.3 Create role management endpoints for site admins
+  - [x] 3.7.4 Write tests for authorization policies
 
-- [ ] 3.8 Implement user profile endpoints (FR-24, FR-25)
-  - [ ] 3.8.1 Create `GET /api/users/{id}` endpoint (public profile)
-  - [ ] 3.8.2 Create `GET /api/users/me` endpoint (current user)
-  - [ ] 3.8.3 Create `PUT /api/users/me` endpoint (update profile)
-  - [ ] 3.8.4 Create `PUT /api/users/me/avatar` endpoint (upload avatar)
-  - [ ] 3.8.5 Implement profile visibility setting (public/private)
-  - [ ] 3.8.6 Write integration tests for profile endpoints
+- [x] 3.8 Implement user profile endpoints (FR-24, FR-25)
+  - [x] 3.8.1 Create `GET /api/users/{id}` endpoint (public profile)
+  - [x] 3.8.2 Create `GET /api/users/me` endpoint (current user)
+  - [x] 3.8.3 Create `PUT /api/users/me` endpoint (update profile)
+  - [x] 3.8.4 Create `PUT /api/users/me/avatar` endpoint (upload avatar)
+  - [x] 3.8.5 Implement profile visibility setting (public/private)
+  - [x] 3.8.6 Write integration tests for profile endpoints
 
 ---
 
 ### 4.0 MUD listings core API (traces to: FR-1, FR-14 to FR-17)
 
-- [ ] 4.1 Create repository interfaces and implementations
-  - [ ] 4.1.1 Create `IMudRepository` interface with CRUD + search methods
-  - [ ] 4.1.2 Implement `MudRepository` with EF Core
-  - [ ] 4.1.3 Implement full-text search using SQL CONTAINS or LIKE
-  - [ ] 4.1.4 Implement filtering by genre, status, player count, date range
-  - [ ] 4.1.5 Implement sorting by player count, rating, newest, alphabetical, trending
-  - [ ] 4.1.6 Implement pagination with cursor-based or offset pagination
+- [x] 4.1 Create repository interfaces and implementations
+  - [x] 4.1.1 Create `IMudRepository` interface with CRUD + search methods
+  - [x] 4.1.2 Implement `MudRepository` with EF Core
+  - [x] 4.1.3 Implement full-text search using SQL CONTAINS or LIKE
+  - [x] 4.1.4 Implement filtering by genre, status, player count, date range
+  - [x] 4.1.5 Implement sorting by player count, rating, newest, alphabetical, trending
+  - [x] 4.1.6 Implement pagination with cursor-based or offset pagination
 
-- [ ] 4.2 Create MUD query handlers
-  - [ ] 4.2.1 Create `GetMudByIdQuery` and handler
-  - [ ] 4.2.2 Create `GetMudBySlugQuery` and handler
-  - [ ] 4.2.3 Create `SearchMudsQuery` with filters/sorting and handler
-  - [ ] 4.2.4 Create `GetFeaturedMudsQuery` and handler
-  - [ ] 4.2.5 Create `GetTrendingMudsQuery` and handler (FR-19)
-  - [ ] 4.2.6 Create `GetMudsByGenreQuery` and handler
-  - [ ] 4.2.7 Create `GetAutocompleteQuery` and handler (FR-18)
+- [x] 4.2 Create MUD query handlers
+  - [x] 4.2.1 Create `GetMudByIdQuery` and handler
+  - [x] 4.2.2 Create `GetMudBySlugQuery` and handler
+  - [x] 4.2.3 Create `SearchMudsQuery` with filters/sorting and handler
+  - [x] 4.2.4 Create `GetFeaturedMudsQuery` and handler
+  - [x] 4.2.5 Create `GetTrendingMudsQuery` and handler (FR-19)
+  - [x] 4.2.6 Create `GetMudsByGenreQuery` and handler
+  - [x] 4.2.7 Create `GetAutocompleteQuery` and handler (FR-18)
 
-- [ ] 4.3 Create MUD DTOs
-  - [ ] 4.3.1 Create `MudListDto` (summary for list views)
-  - [ ] 4.3.2 Create `MudDetailDto` (full details for detail page)
-  - [ ] 4.3.3 Create `MudSearchResultDto` with pagination metadata
-  - [ ] 4.3.4 Create `GenreDto` with MUD counts
+- [x] 4.3 Create MUD DTOs
+  - [x] 4.3.1 Create `MudListDto` (summary for list views)
+  - [x] 4.3.2 Create `MudDetailDto` (full details for detail page)
+  - [x] 4.3.3 Create `MudSearchResultDto` with pagination metadata
+  - [x] 4.3.4 Create `GenreDto` with MUD counts
 
-- [ ] 4.4 Implement MUD API endpoints
-  - [ ] 4.4.1 Create `GET /api/muds` endpoint with search, filter, sort, pagination
-  - [ ] 4.4.2 Create `GET /api/muds/{idOrSlug}` endpoint
-  - [ ] 4.4.3 Create `GET /api/muds/featured` endpoint
-  - [ ] 4.4.4 Create `GET /api/muds/trending` endpoint
-  - [ ] 4.4.5 Create `GET /api/genres` endpoint with counts
-  - [ ] 4.4.6 Create `GET /api/muds/autocomplete?q={query}` endpoint
-  - [ ] 4.4.7 Verify search returns within 500ms (FR-17)
+- [x] 4.4 Implement MUD API endpoints
+  - [x] 4.4.1 Create `GET /api/muds` endpoint with search, filter, sort, pagination
+  - [x] 4.4.2 Create `GET /api/muds/{idOrSlug}` endpoint
+  - [x] 4.4.3 Create `GET /api/muds/featured` endpoint
+  - [x] 4.4.4 Create `GET /api/muds/trending` endpoint
+  - [x] 4.4.5 Create `GET /api/genres` endpoint with counts
+  - [x] 4.4.6 Create `GET /api/muds/autocomplete?q={query}` endpoint
+  - [x] 4.4.7 Verify search returns within 500ms (FR-17)
 
-- [ ] 4.5 Write MUD API tests
-  - [ ] 4.5.1 Write unit tests for search query handlers
-  - [ ] 4.5.2 Write unit tests for filtering logic
-  - [ ] 4.5.3 Write integration tests for all MUD endpoints
-  - [ ] 4.5.4 Write performance test for 500ms search requirement
+- [x] 4.5 Write MUD API tests
+  - [x] 4.5.1 Write unit tests for search query handlers
+  - [x] 4.5.2 Write unit tests for filtering logic
+  - [x] 4.5.3 Write integration tests for all MUD endpoints
+  - [x] 4.5.4 Write performance test for 500ms search requirement
 
 ---
 
 ### 5.0 MSSP integration service (traces to: FR-7 to FR-13)
 
-- [ ] 5.1 Research and implement MSSP protocol
-  - [ ] 5.1.1 Study MSSP protocol specification (http://tintin.mudhalla.net/protocols/mssp/)
-  - [ ] 5.1.2 Create `IMsspClient` interface with `GetStatusAsync(host, port)` method
-  - [ ] 5.1.3 Implement `MsspClient` using `TcpClient` for telnet connections
-  - [ ] 5.1.4 Implement MSSP request sequence (IAC DO MSSP)
-  - [ ] 5.1.5 Parse MSSP response into `MsspData` value object
-  - [ ] 5.1.6 Handle connection timeouts (10 second default)
-  - [ ] 5.1.7 Implement TCP fallback for non-MSSP servers (FR-13)
+- [x] 5.1 Research and implement MSSP protocol
+  - [x] 5.1.1 Study MSSP protocol specification (http://tintin.mudhalla.net/protocols/mssp/)
+  - [x] 5.1.2 Create `IMsspClient` interface with `GetStatusAsync(host, port)` method
+  - [x] 5.1.3 Implement `MsspClient` using `TcpClient` for telnet connections
+  - [x] 5.1.4 Implement MSSP request sequence (IAC DO MSSP)
+  - [x] 5.1.5 Parse MSSP response into `MsspData` value object
+  - [x] 5.1.6 Handle connection timeouts (10 second default)
+  - [x] 5.1.7 Implement TCP fallback for non-MSSP servers (FR-13)
 
-- [ ] 5.2 Implement background polling service (FR-11)
-  - [ ] 5.2.1 Create `MsspPollingService` as hosted background service
-  - [ ] 5.2.2 Configure polling interval (default 5 minutes) from appsettings
-  - [ ] 5.2.3 Implement concurrent polling with configurable limit (e.g., 10 concurrent)
-  - [ ] 5.2.4 Implement retry logic with exponential backoff
-  - [ ] 5.2.5 Mark MUD offline after 3 consecutive failures (FR-10)
-  - [ ] 5.2.6 Log polling results with Serilog
+- [x] 5.2 Implement background polling service (FR-11)
+  - [x] 5.2.1 Create `MsspPollingService` as hosted background service
+  - [x] 5.2.2 Configure polling interval (default 5 minutes) from appsettings
+  - [x] 5.2.3 Implement concurrent polling with configurable limit (e.g., 10 concurrent)
+  - [x] 5.2.4 Implement retry logic with exponential backoff
+  - [x] 5.2.5 Mark MUD offline after 3 consecutive failures (FR-10)
+  - [x] 5.2.6 Log polling results with Serilog
 
-- [ ] 5.3 Store and expose status data
-  - [ ] 5.3.1 Update `Mud.CurrentStatus` after each successful poll
-  - [ ] 5.3.2 Store `MudStatus` snapshots for historical data (FR-12)
-  - [ ] 5.3.3 Create `GET /api/muds/{id}/status` endpoint for current status
-  - [ ] 5.3.4 Create `GET /api/muds/{id}/status/history` endpoint for trends
-  - [ ] 5.3.5 Add status fields to MUD DTOs (playerCount, isOnline, lastChecked)
+- [x] 5.3 Store and expose status data
+  - [x] 5.3.1 Update `Mud.CurrentStatus` after each successful poll
+  - [x] 5.3.2 Store `MudStatus` snapshots for historical data (FR-12)
+  - [x] 5.3.3 Create `GET /api/muds/{id}/status` endpoint for current status
+  - [x] 5.3.4 Create `GET /api/muds/{id}/status/history` endpoint for trends
+  - [x] 5.3.5 Add status fields to MUD DTOs (playerCount, isOnline, lastChecked)
 
-- [ ] 5.4 Write MSSP tests
-  - [ ] 5.4.1 Write unit tests for MSSP response parsing
-  - [ ] 5.4.2 Write integration tests with mock TCP server
-  - [ ] 5.4.3 Write tests for offline detection logic
-  - [ ] 5.4.4 Write tests for polling service scheduling
+- [x] 5.4 Write MSSP tests
+  - [x] 5.4.1 Write unit tests for MSSP response parsing
+  - [x] 5.4.2 Write integration tests with mock TCP server
+  - [x] 5.4.3 Write tests for offline detection logic
+  - [x] 5.4.4 Write tests for polling service scheduling
 
 ---
 
 ### 6.0 Reviews & ratings API (traces to: FR-27 to FR-32)
 
-- [ ] 6.1 Create review repository and handlers
-  - [ ] 6.1.1 Create `IReviewRepository` interface
-  - [ ] 6.1.2 Implement `ReviewRepository` with EF Core
-  - [ ] 6.1.3 Create `CreateReviewCommand` and handler (FR-27)
-  - [ ] 6.1.4 Create `UpdateReviewCommand` and handler
-  - [ ] 6.1.5 Create `DeleteReviewCommand` and handler
-  - [ ] 6.1.6 Enforce one review per user per MUD (FR-28)
+- [x] 6.1 Create review repository and handlers
+  - [x] 6.1.1 Create `IReviewRepository` interface
+  - [x] 6.1.2 Implement `ReviewRepository` with EF Core
+  - [x] 6.1.3 Create `CreateReviewCommand` and handler (FR-27)
+  - [x] 6.1.4 Create `UpdateReviewCommand` and handler
+  - [x] 6.1.5 Create `DeleteReviewCommand` and handler
+  - [x] 6.1.6 Enforce one review per user per MUD (FR-28)
 
-- [ ] 6.2 Implement aggregate ratings (FR-29)
-  - [ ] 6.2.1 Create method to calculate average rating for a MUD
-  - [ ] 6.2.2 Update MUD aggregate rating on review create/update/delete
-  - [ ] 6.2.3 Include rating data in MUD DTOs
+- [x] 6.2 Implement aggregate ratings (FR-29)
+  - [x] 6.2.1 Create method to calculate average rating for a MUD
+  - [x] 6.2.2 Update MUD aggregate rating on review create/update/delete
+  - [x] 6.2.3 Include rating data in MUD DTOs
 
-- [ ] 6.3 Implement helpful votes (FR-30)
-  - [ ] 6.3.1 Create `MarkReviewHelpfulCommand` and handler
-  - [ ] 6.3.2 Prevent users from voting on their own reviews
-  - [ ] 6.3.3 Track helpful count on reviews
-  - [ ] 6.3.4 Add sorting by helpfulness to review queries
+- [x] 6.3 Implement helpful votes (FR-30)
+  - [x] 6.3.1 Create `MarkReviewHelpfulCommand` and handler
+  - [x] 6.3.2 Prevent users from voting on their own reviews
+  - [x] 6.3.3 Track helpful count on reviews
+  - [x] 6.3.4 Add sorting by helpfulness to review queries
 
-- [ ] 6.4 Implement admin replies (FR-31)
-  - [ ] 6.4.1 Create `ReplyToReviewCommand` and handler
-  - [ ] 6.4.2 Verify user is admin of the MUD being reviewed
-  - [ ] 6.4.3 Include admin badge indicator in response
+- [x] 6.4 Implement admin replies (FR-31)
+  - [x] 6.4.1 Create `ReplyToReviewCommand` and handler
+  - [x] 6.4.2 Verify user is admin of the MUD being reviewed
+  - [x] 6.4.3 Include admin badge indicator in response
 
-- [ ] 6.5 Implement review reporting (FR-32)
-  - [ ] 6.5.1 Create `ReportReviewCommand` and handler
-  - [ ] 6.5.2 Create `ReviewReport` entity (review, reporter, reason, status)
-  - [ ] 6.5.3 Add reported reviews to moderation queue
+- [x] 6.5 Implement review reporting (FR-32)
+  - [x] 6.5.1 Create `ReportReviewCommand` and handler
+  - [x] 6.5.2 Create `ReviewReport` entity (review, reporter, reason, status)
+  - [x] 6.5.3 Add reported reviews to moderation queue
 
-- [ ] 6.6 Implement review API endpoints
-  - [ ] 6.6.1 Create `GET /api/muds/{mudId}/reviews` endpoint (paginated)
-  - [ ] 6.6.2 Create `POST /api/muds/{mudId}/reviews` endpoint
-  - [ ] 6.6.3 Create `PUT /api/reviews/{id}` endpoint
-  - [ ] 6.6.4 Create `DELETE /api/reviews/{id}` endpoint
-  - [ ] 6.6.5 Create `POST /api/reviews/{id}/helpful` endpoint
-  - [ ] 6.6.6 Create `POST /api/reviews/{id}/reply` endpoint
-  - [ ] 6.6.7 Create `POST /api/reviews/{id}/report` endpoint
-  - [ ] 6.6.8 Create `GET /api/users/{userId}/reviews` endpoint
+- [x] 6.6 Implement review API endpoints
+  - [x] 6.6.1 Create `GET /api/muds/{mudId}/reviews` endpoint (paginated)
+  - [x] 6.6.2 Create `POST /api/muds/{mudId}/reviews` endpoint
+  - [x] 6.6.3 Create `PUT /api/reviews/{id}` endpoint
+  - [x] 6.6.4 Create `DELETE /api/reviews/{id}` endpoint
+  - [x] 6.6.5 Create `POST /api/reviews/{id}/helpful` endpoint
+  - [x] 6.6.6 Create `POST /api/reviews/{id}/reply` endpoint
+  - [x] 6.6.7 Create `POST /api/reviews/{id}/report` endpoint
+  - [x] 6.6.8 Create `GET /api/users/{userId}/reviews` endpoint
 
-- [ ] 6.7 Write review tests
-  - [ ] 6.7.1 Write unit tests for rating calculations
-  - [ ] 6.7.2 Write unit tests for one-review-per-user validation
-  - [ ] 6.7.3 Write integration tests for review CRUD
-  - [ ] 6.7.4 Write integration tests for helpful voting
+- [x] 6.7 Write review tests
+  - [x] 6.7.1 Write unit tests for rating calculations
+  - [x] 6.7.2 Write unit tests for one-review-per-user validation
+  - [x] 6.7.3 Write integration tests for review CRUD
+  - [x] 6.7.4 Write integration tests for helpful voting
 
 ---
 
 ### 7.0 Favorites & activity feed API (traces to: FR-33 to FR-37)
 
-- [ ] 7.1 Implement favorites (FR-33, FR-34)
-  - [ ] 7.1.1 Create `IFavoriteRepository` interface
-  - [ ] 7.1.2 Implement `FavoriteRepository` with EF Core
-  - [ ] 7.1.3 Create `AddFavoriteCommand` and handler
-  - [ ] 7.1.4 Create `RemoveFavoriteCommand` and handler
-  - [ ] 7.1.5 Create `GetUserFavoritesQuery` and handler
-  - [ ] 7.1.6 Create `CheckIsFavoriteQuery` for quick checks
+- [x] 7.1 Implement favorites (FR-33, FR-34)
+  - [x] 7.1.1 Create `IFavoriteRepository` interface
+  - [x] 7.1.2 Implement `FavoriteRepository` with EF Core
+  - [x] 7.1.3 Create `AddFavoriteCommand` and handler
+  - [x] 7.1.4 Create `RemoveFavoriteCommand` and handler
+  - [x] 7.1.5 Create `GetUserFavoritesQuery` and handler
+  - [x] 7.1.6 Create `CheckIsFavoriteQuery` for quick checks
 
-- [ ] 7.2 Implement favorites API endpoints
-  - [ ] 7.2.1 Create `POST /api/muds/{mudId}/favorite` endpoint (toggle)
-  - [ ] 7.2.2 Create `GET /api/users/me/favorites` endpoint
-  - [ ] 7.2.3 Create `GET /api/users/{userId}/favorites` endpoint (if public)
-  - [ ] 7.2.4 Include `isFavorited` flag in MUD DTOs for authenticated users
+- [x] 7.2 Implement favorites API endpoints
+  - [x] 7.2.1 Create `POST /api/muds/{mudId}/favorite` endpoint (toggle)
+  - [x] 7.2.2 Create `GET /api/users/me/favorites` endpoint
+  - [x] 7.2.3 Create `GET /api/users/{userId}/favorites` endpoint (if public)
+  - [x] 7.2.4 Include `isFavorited` flag in MUD DTOs for authenticated users
 
-- [ ] 7.3 Implement activity event service (FR-35)
-  - [ ] 7.3.1 Create `IActivityService` interface
-  - [ ] 7.3.2 Implement `ActivityService` to create events
-  - [ ] 7.3.3 Trigger events on: new listing, new review, status change, featured
-  - [ ] 7.3.4 Store metadata as JSON for flexible event details
+- [x] 7.3 Implement activity event service (FR-35)
+  - [x] 7.3.1 Create `IActivityService` interface
+  - [x] 7.3.2 Implement `ActivityService` to create events
+  - [x] 7.3.3 Trigger events on: new listing, new review, status change, featured
+  - [x] 7.3.4 Store metadata as JSON for flexible event details
 
-- [ ] 7.4 Implement activity feed queries (FR-36, FR-37)
-  - [ ] 7.4.1 Create `GetGlobalActivityFeedQuery` and handler
-  - [ ] 7.4.2 Create `GetPersonalizedActivityFeedQuery` and handler
-  - [ ] 7.4.3 Personalized feed shows activity for favorited MUDs
+- [x] 7.4 Implement activity feed queries (FR-36, FR-37)
+  - [x] 7.4.1 Create `GetGlobalActivityFeedQuery` and handler
+  - [x] 7.4.2 Create `GetPersonalizedActivityFeedQuery` and handler
+  - [x] 7.4.3 Personalized feed shows activity for favorited MUDs
 
-- [ ] 7.5 Implement activity feed API endpoints
-  - [ ] 7.5.1 Create `GET /api/activity` endpoint (global feed)
-  - [ ] 7.5.2 Create `GET /api/activity/personalized` endpoint (authenticated)
-  - [ ] 7.5.3 Implement pagination for activity feeds
+- [x] 7.5 Implement activity feed API endpoints
+  - [x] 7.5.1 Create `GET /api/activity` endpoint (global feed)
+  - [x] 7.5.2 Create `GET /api/activity/personalized` endpoint (authenticated)
+  - [x] 7.5.3 Implement pagination for activity feeds
 
-- [ ] 7.6 Implement trending algorithm (FR-19)
-  - [ ] 7.6.1 Define trending score formula (views + favorites + reviews weighted by recency)
-  - [ ] 7.6.2 Create background job to calculate trending scores periodically
-  - [ ] 7.6.3 Store trending score on MUD entity for fast queries
+- [x] 7.6 Implement trending algorithm (FR-19)
+  - [x] 7.6.1 Define trending score formula (views + favorites + reviews weighted by recency)
+  - [x] 7.6.2 Create background job to calculate trending scores periodically
+  - [x] 7.6.3 Store trending score on MUD entity for fast queries
 
-- [ ] 7.7 Write favorites and activity tests
-  - [ ] 7.7.1 Write unit tests for activity service
-  - [ ] 7.7.2 Write unit tests for trending calculation
-  - [ ] 7.7.3 Write integration tests for favorites endpoints
-  - [ ] 7.7.4 Write integration tests for activity feed endpoints
+- [x] 7.7 Write favorites and activity tests
+  - [x] 7.7.1 Write unit tests for activity service
+  - [x] 7.7.2 Write unit tests for trending calculation
+  - [x] 7.7.3 Write integration tests for favorites endpoints
+  - [x] 7.7.4 Write integration tests for activity feed endpoints
 
 ---
 
 ### 8.0 MUD admin features API (traces to: FR-38 to FR-43)
 
-- [ ] 8.1 Implement ownership claim verification (FR-38, FR-39)
-  - [ ] 8.1.1 Create `ClaimMudCommand` with verification method choice
-  - [ ] 8.1.2 Generate unique verification code for each claim request
-  - [ ] 8.1.3 Implement MSSP verification: check for code in MSSP response
-  - [ ] 8.1.4 Implement website meta tag verification: check for meta tag on MUD website
-  - [ ] 8.1.5 Create `VerifyClaimCommand` and handler to complete verification
-  - [ ] 8.1.6 Grant MudAdmin role for the specific MUD on successful verification
+- [x] 8.1 Implement ownership claim verification (FR-38, FR-39)
+  - [x] 8.1.1 Create `ClaimMudCommand` with verification method choice
+  - [x] 8.1.2 Generate unique verification code for each claim request
+  - [x] 8.1.3 Implement MSSP verification: check for code in MSSP response
+  - [x] 8.1.4 Implement website meta tag verification: check for meta tag on MUD website
+  - [x] 8.1.5 Create `VerifyClaimCommand` and handler to complete verification
+  - [x] 8.1.6 Grant MudAdmin role for the specific MUD on successful verification
 
-- [ ] 8.2 Implement MUD admin management endpoints
-  - [ ] 8.2.1 Create `POST /api/muds/{mudId}/claim` endpoint (initiate claim)
-  - [ ] 8.2.2 Create `POST /api/muds/{mudId}/claim/verify` endpoint (complete claim)
-  - [ ] 8.2.3 Create `GET /api/users/me/muds` endpoint (list managed MUDs)
+- [x] 8.2 Implement MUD admin management endpoints
+  - [x] 8.2.1 Create `POST /api/muds/{mudId}/claim` endpoint (initiate claim)
+  - [x] 8.2.2 Create `POST /api/muds/{mudId}/claim/verify` endpoint (complete claim)
+  - [x] 8.2.3 Create `GET /api/users/me/muds` endpoint (list managed MUDs)
 
-- [ ] 8.3 Implement MUD editing for admins (FR-40)
-  - [ ] 8.3.1 Create `UpdateMudCommand` and handler (all fields editable)
-  - [ ] 8.3.2 Create `PUT /api/muds/{mudId}` endpoint with MudAdmin authorization
-  - [ ] 8.3.3 Validate MUD admin ownership before allowing edits
-  - [ ] 8.3.4 Log all edit actions for audit
+- [x] 8.3 Implement MUD editing for admins (FR-40)
+  - [x] 8.3.1 Create `UpdateMudCommand` and handler (all fields editable)
+  - [x] 8.3.2 Create `PUT /api/muds/{mudId}` endpoint with MudAdmin authorization
+  - [x] 8.3.3 Validate MUD admin ownership before allowing edits
+  - [x] 8.3.4 Log all edit actions for audit
 
-- [ ] 8.4 Implement analytics dashboard (FR-41)
-  - [ ] 8.4.1 Track page views per MUD (use middleware or service)
-  - [ ] 8.4.2 Track unique visitors (by IP hash or user ID)
-  - [ ] 8.4.3 Track click-throughs (website link, connect button)
-  - [ ] 8.4.4 Create `GetMudAnalyticsQuery` and handler
-  - [ ] 8.4.5 Create `GET /api/muds/{mudId}/analytics` endpoint
+- [x] 8.4 Implement analytics dashboard (FR-41)
+  - [x] 8.4.1 Track page views per MUD (use middleware or service)
+  - [x] 8.4.2 Track unique visitors (by IP hash or user ID)
+  - [x] 8.4.3 Track click-throughs (website link, connect button)
+  - [x] 8.4.4 Create `GetMudAnalyticsQuery` and handler
+  - [x] 8.4.5 Create `GET /api/muds/{mudId}/analytics` endpoint
 
-- [ ] 8.5 Implement ownership transfer (FR-42)
-  - [ ] 8.5.1 Create `TransferOwnershipCommand` and handler
-  - [ ] 8.5.2 Require confirmation from both parties (or email verification)
-  - [ ] 8.5.3 Create `POST /api/muds/{mudId}/transfer` endpoint
+- [x] 8.5 Implement ownership transfer (FR-42)
+  - [x] 8.5.1 Create `TransferOwnershipCommand` and handler
+  - [x] 8.5.2 Require confirmation from both parties (or email verification)
+  - [x] 8.5.3 Create `POST /api/muds/{mudId}/transfer` endpoint
 
-- [ ] 8.6 Implement multiple admins per MUD (FR-43)
-  - [ ] 8.6.1 Create `InviteAdminCommand` and handler
-  - [ ] 8.6.2 Create `RemoveAdminCommand` and handler
-  - [ ] 8.6.3 Create `GET /api/muds/{mudId}/admins` endpoint
-  - [ ] 8.6.4 Create `POST /api/muds/{mudId}/admins/invite` endpoint
-  - [ ] 8.6.5 Create `DELETE /api/muds/{mudId}/admins/{userId}` endpoint
+- [x] 8.6 Implement multiple admins per MUD (FR-43)
+  - [x] 8.6.1 Create `InviteAdminCommand` and handler
+  - [x] 8.6.2 Create `RemoveAdminCommand` and handler
+  - [x] 8.6.3 Create `GET /api/muds/{mudId}/admins` endpoint
+  - [x] 8.6.4 Create `POST /api/muds/{mudId}/admins/invite` endpoint
+  - [x] 8.6.5 Create `DELETE /api/muds/{mudId}/admins/{userId}` endpoint
 
-- [ ] 8.7 Write MUD admin tests
-  - [ ] 8.7.1 Write unit tests for verification code generation
-  - [ ] 8.7.2 Write integration tests for claim flow
-  - [ ] 8.7.3 Write integration tests for MUD editing authorization
-  - [ ] 8.7.4 Write integration tests for analytics endpoint
+- [x] 8.7 Write MUD admin tests
+  - [x] 8.7.1 Write unit tests for verification code generation
+  - [x] 8.7.2 Write integration tests for claim flow
+  - [x] 8.7.3 Write integration tests for MUD editing authorization
+  - [x] 8.7.4 Write integration tests for analytics endpoint
 
 ---
 
 ### 9.0 Site administration API (traces to: FR-44 to FR-49)
 
-- [ ] 9.1 Implement moderation queue (FR-44, FR-45)
-  - [ ] 9.1.1 Create `GetModerationQueueQuery` for reported content
-  - [ ] 9.1.2 Create `ModerateContentCommand` (approve, hide, delete)
-  - [ ] 9.1.3 Create `GET /api/admin/moderation` endpoint
-  - [ ] 9.1.4 Create `POST /api/admin/moderation/{type}/{id}` endpoint
-  - [ ] 9.1.5 Add SiteAdmin authorization to all admin endpoints
+- [x] 9.1 Implement moderation queue (FR-44, FR-45)
+  - [x] 9.1.1 Create `GetModerationQueueQuery` for reported content
+  - [x] 9.1.2 Create `ModerateContentCommand` (approve, hide, delete)
+  - [x] 9.1.3 Create `GET /api/admin/moderation` endpoint
+  - [x] 9.1.4 Create `POST /api/admin/moderation/{type}/{id}` endpoint
+  - [x] 9.1.5 Add SiteAdmin authorization to all admin endpoints
 
-- [ ] 9.2 Implement bulk import (FR-46, FR-47)
-  - [ ] 9.2.1 Create `ImportMudsCommand` accepting CSV/Excel data
-  - [ ] 9.2.2 Implement CSV parsing with column mapping
-  - [ ] 9.2.3 Implement Excel parsing (EPPlus or ClosedXML)
-  - [ ] 9.2.4 Validate each row and collect errors without failing
-  - [ ] 9.2.5 Return import report (success count, error details)
-  - [ ] 9.2.6 Create `POST /api/admin/import` endpoint (multipart form)
+- [x] 9.2 Implement bulk import (FR-46, FR-47)
+  - [x] 9.2.1 Create `ImportMudsCommand` accepting CSV/Excel data
+  - [x] 9.2.2 Implement CSV parsing with column mapping
+  - [x] 9.2.3 Implement Excel parsing (EPPlus or ClosedXML)
+  - [x] 9.2.4 Validate each row and collect errors without failing
+  - [x] 9.2.5 Return import report (success count, error details)
+  - [x] 9.2.6 Create `POST /api/admin/import` endpoint (multipart form)
 
-- [ ] 9.3 Implement featured content management (FR-48)
-  - [ ] 9.3.1 Add `IsFeatured` and `FeaturedOrder` fields to MUD entity
-  - [ ] 9.3.2 Create `SetFeaturedCommand` and handler
-  - [ ] 9.3.3 Create `POST /api/admin/muds/{mudId}/feature` endpoint
-  - [ ] 9.3.4 Create `DELETE /api/admin/muds/{mudId}/feature` endpoint
-  - [ ] 9.3.5 Create `PUT /api/admin/featured/order` endpoint (reorder)
+- [x] 9.3 Implement featured content management (FR-48)
+  - [x] 9.3.1 Add `IsFeatured` and `FeaturedOrder` fields to MUD entity
+  - [x] 9.3.2 Create `SetFeaturedCommand` and handler
+  - [x] 9.3.3 Create `POST /api/admin/muds/{mudId}/feature` endpoint
+  - [x] 9.3.4 Create `DELETE /api/admin/muds/{mudId}/feature` endpoint
+  - [x] 9.3.5 Create `PUT /api/admin/featured/order` endpoint (reorder)
 
-- [ ] 9.4 Implement audit logging (FR-49)
-  - [ ] 9.4.1 Create `AuditLog` entity (action, user, target, timestamp, details)
-  - [ ] 9.4.2 Create `IAuditService` interface
-  - [ ] 9.4.3 Implement `AuditService` to log all admin actions
-  - [ ] 9.4.4 Create `GET /api/admin/audit` endpoint (paginated, filterable)
+- [x] 9.4 Implement audit logging (FR-49)
+  - [x] 9.4.1 Create `AuditLog` entity (action, user, target, timestamp, details)
+  - [x] 9.4.2 Create `IAuditService` interface
+  - [x] 9.4.3 Implement `AuditService` to log all admin actions
+  - [x] 9.4.4 Create `GET /api/admin/audit` endpoint (paginated, filterable)
 
-- [ ] 9.5 Implement additional site admin features
-  - [ ] 9.5.1 Create `GET /api/admin/stats` endpoint (dashboard overview)
-  - [ ] 9.5.2 Create `GET /api/admin/users` endpoint (user management)
-  - [ ] 9.5.3 Create `PUT /api/admin/users/{id}/role` endpoint (change role)
-  - [ ] 9.5.4 Create `POST /api/admin/muds` endpoint (manual MUD creation)
+- [x] 9.5 Implement additional site admin features
+  - [x] 9.5.1 Create `GET /api/admin/stats` endpoint (dashboard overview)
+  - [x] 9.5.2 Create `GET /api/admin/users` endpoint (user management)
+  - [x] 9.5.3 Create `PUT /api/admin/users/{id}/role` endpoint (change role)
+  - [x] 9.5.4 Create `POST /api/admin/muds` endpoint (manual MUD creation)
 
-- [ ] 9.6 Write site admin tests
-  - [ ] 9.6.1 Write unit tests for import validation logic
-  - [ ] 9.6.2 Write integration tests for moderation endpoints
-  - [ ] 9.6.3 Write integration tests for import endpoint
-  - [ ] 9.6.4 Write integration tests for featured management
+- [x] 9.6 Write site admin tests
+  - [x] 9.6.1 Write unit tests for import validation logic
+  - [x] 9.6.2 Write integration tests for moderation endpoints
+  - [x] 9.6.3 Write integration tests for import endpoint
+  - [x] 9.6.4 Write integration tests for featured management
 
 ---
 
 ### 10.0 Frontend foundation (traces to: Section 7.1 Frontend)
 
-- [ ] 10.1 Set up core shadcn/ui components
-  - [ ] 10.1.1 Add Button component with Primary, Secondary, Terminal variants per DRD
-  - [ ] 10.1.2 Add Input component with focus states per DRD
-  - [ ] 10.1.3 Add Card component for MUD cards
-  - [ ] 10.1.4 Add Dialog component for modals
-  - [ ] 10.1.5 Add DropdownMenu component for menus
-  - [ ] 10.1.6 Add Badge component for genre tags
-  - [ ] 10.1.7 Add Avatar component for user avatars
-  - [ ] 10.1.8 Add Skeleton component for loading states
-  - [ ] 10.1.9 Add Toast component for notifications
-  - [ ] 10.1.10 Customize all components to match DRD color tokens
+- [x] 10.1 Set up core shadcn/ui components
+  - [x] 10.1.1 Add Button component with Primary, Secondary, Terminal variants per DRD
+  - [x] 10.1.2 Add Input component with focus states per DRD
+  - [x] 10.1.3 Add Card component for MUD cards
+  - [x] 10.1.4 Add Dialog component for modals
+  - [x] 10.1.5 Add DropdownMenu component for menus
+  - [x] 10.1.6 Add Badge component for genre tags
+  - [x] 10.1.7 Add Avatar component for user avatars
+  - [x] 10.1.8 Add Skeleton component for loading states
+  - [x] 10.1.9 Add Toast component for notifications
+  - [x] 10.1.10 Customize all components to match DRD color tokens
 
-- [ ] 10.2 Create API client and hooks
-  - [ ] 10.2.1 Create `api.ts` with axios/ky instance and interceptors
-  - [ ] 10.2.2 Configure request/response interceptors for auth tokens
-  - [ ] 10.2.3 Configure TanStack Query client with defaults
-  - [ ] 10.2.4 Create `use-muds.ts` hook with queries (list, detail, search)
-  - [ ] 10.2.5 Create `use-reviews.ts` hook with queries and mutations
-  - [ ] 10.2.6 Create `use-favorites.ts` hook with queries and mutations
-  - [ ] 10.2.7 Create `use-auth.ts` hook for authentication state
+- [x] 10.2 Create API client and hooks
+  - [x] 10.2.1 Create `api.ts` with axios/ky instance and interceptors
+  - [x] 10.2.2 Configure request/response interceptors for auth tokens
+  - [x] 10.2.3 Configure TanStack Query client with defaults
+  - [x] 10.2.4 Create `use-muds.ts` hook with queries (list, detail, search)
+  - [x] 10.2.5 Create `use-reviews.ts` hook with queries and mutations
+  - [x] 10.2.6 Create `use-favorites.ts` hook with queries and mutations
+  - [x] 10.2.7 Create `use-auth.ts` hook for authentication state
 
-- [ ] 10.3 Create Zustand stores
-  - [ ] 10.3.1 Create `auth-store.ts` (user, tokens, login/logout actions)
-  - [ ] 10.3.2 Create `theme-store.ts` (dark/light mode, persistence)
-  - [ ] 10.3.3 Create `filter-store.ts` (search filters, sorting state)
+- [x] 10.3 Create Zustand stores
+  - [x] 10.3.1 Create `auth-store.ts` (user, tokens, login/logout actions)
+  - [x] 10.3.2 Create `theme-store.ts` (dark/light mode, persistence)
+  - [x] 10.3.3 Create `filter-store.ts` (search filters, sorting state)
 
-- [ ] 10.4 Set up routing
-  - [ ] 10.4.1 Install and configure React Router
-  - [ ] 10.4.2 Create route definitions for all pages
-  - [ ] 10.4.3 Create `ProtectedRoute` component for authenticated routes
-  - [ ] 10.4.4 Create `AdminRoute` component for admin-only routes
-  - [ ] 10.4.5 Implement route-based code splitting (lazy loading)
+- [x] 10.4 Set up routing
+  - [x] 10.4.1 Install and configure React Router
+  - [x] 10.4.2 Create route definitions for all pages
+  - [x] 10.4.3 Create `ProtectedRoute` component for authenticated routes
+  - [x] 10.4.4 Create `AdminRoute` component for admin-only routes
+  - [x] 10.4.5 Implement route-based code splitting (lazy loading)
 
-- [ ] 10.5 Create layout components
-  - [ ] 10.5.1 Create `Header` component with navigation per DRD Section 5.7
-  - [ ] 10.5.2 Create mobile hamburger menu with slide-out navigation
-  - [ ] 10.5.3 Create `Footer` component
-  - [ ] 10.5.4 Create `ThemeToggle` component per DRD Section 5.8
-  - [ ] 10.5.5 Create `Layout` wrapper component with header/footer
-  - [ ] 10.5.6 Implement sticky header with backdrop blur
+- [x] 10.5 Create layout components
+  - [x] 10.5.1 Create `Header` component with navigation per DRD Section 5.7
+  - [x] 10.5.2 Create mobile hamburger menu with slide-out navigation
+  - [x] 10.5.3 Create `Footer` component
+  - [x] 10.5.4 Create `ThemeToggle` component per DRD Section 5.8
+  - [x] 10.5.5 Create `Layout` wrapper component with header/footer
+  - [x] 10.5.6 Implement sticky header with backdrop blur
 
-- [ ] 10.6 Create shared feature components
-  - [ ] 10.6.1 Create `SearchBar` component with autocomplete per DRD Section 5.5
-  - [ ] 10.6.2 Create `StatusIndicator` component (online/offline dot with glow)
-  - [ ] 10.6.3 Create `GenreTag` component for genre badges
-  - [ ] 10.6.4 Create `StarRating` component for ratings display
-  - [ ] 10.6.5 Create `Pagination` component
-  - [ ] 10.6.6 Create `EmptyState` component per DRD Section 6.4
+- [x] 10.6 Create shared feature components
+  - [x] 10.6.1 Create `SearchBar` component with autocomplete per DRD Section 5.5
+  - [x] 10.6.2 Create `StatusIndicator` component (online/offline dot with glow)
+  - [x] 10.6.3 Create `GenreTag` component for genre badges
+  - [x] 10.6.4 Create `StarRating` component for ratings display
+  - [x] 10.6.5 Create `Pagination` component
+  - [x] 10.6.6 Create `EmptyState` component per DRD Section 6.4
 
-- [ ] 10.7 Implement animations and effects
-  - [ ] 10.7.1 Create typing animation effect for hero headline per DRD 6.1
-  - [ ] 10.7.2 Create terminal cursor blink animation
-  - [ ] 10.7.3 Create card hover effects (lift, glow)
-  - [ ] 10.7.4 Create page transition animations
-  - [ ] 10.7.5 Implement `prefers-reduced-motion` media query support
+- [x] 10.7 Implement animations and effects
+  - [x] 10.7.1 Create typing animation effect for hero headline per DRD 6.1
+  - [x] 10.7.2 Create terminal cursor blink animation
+  - [x] 10.7.3 Create card hover effects (lift, glow)
+  - [x] 10.7.4 Create page transition animations
+  - [x] 10.7.5 Implement `prefers-reduced-motion` media query support
 
-- [ ] 10.8 Write frontend foundation tests
-  - [ ] 10.8.1 Set up Vitest for React component testing
-  - [ ] 10.8.2 Write tests for API client interceptors
-  - [ ] 10.8.3 Write tests for Zustand stores
-  - [ ] 10.8.4 Write tests for utility functions
+- [x] 10.8 Write frontend foundation tests
+  - [x] 10.8.1 Set up Vitest for React component testing
+  - [x] 10.8.2 Write tests for API client interceptors
+  - [x] 10.8.3 Write tests for Zustand stores
+  - [x] 10.8.4 Write tests for utility functions
 
 ---
 

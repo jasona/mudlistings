@@ -23,6 +23,11 @@ public class Review : SoftDeleteEntity
 
     public int HelpfulCount { get; set; }
 
+    /// <summary>
+    /// Hidden reviews are not shown to users but are not deleted.
+    /// </summary>
+    public bool IsHidden { get; set; }
+
     // Navigation properties
     public ICollection<ReviewHelpful> HelpfulVotes { get; set; } = new List<ReviewHelpful>();
     public ReviewReply? AdminReply { get; set; }

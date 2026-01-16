@@ -26,6 +26,7 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     public DbSet<MudAdmin> MudAdmins => Set<MudAdmin>();
     public DbSet<MudStatus> MudStatuses => Set<MudStatus>();
     public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
+    public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -385,6 +386,28 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
             entity.HasIndex(e => e.Action);
             entity.HasIndex(e => e.CreatedAt);
             entity.HasIndex(e => new { e.TargetType, e.TargetId });
+        });
+
+        // RefreshToken
+        builder.Entity<RefreshToken>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+
+            entity.Property(e => e.Token)
+                .IsRequired()
+                .HasMaxLength(256);
+
+            entity.Property(e => e.ReplacedByToken)
+                .HasMaxLength(256);
+
+            entity.HasOne(e => e.User)
+                .WithMany()
+                .HasForeignKey(e => e.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasIndex(e => e.Token).IsUnique();
+            entity.HasIndex(e => e.UserId);
+            entity.HasIndex(e => e.ExpiresAt);
         });
     }
 
