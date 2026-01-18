@@ -1,0 +1,325 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  PLAYER
+  MUD_ADMIN
+  SITE_ADMIN
+}
+
+enum Genre {
+  FANTASY
+  SCI_FI
+  HORROR
+  ROLEPLAY
+  PVP
+  SOCIAL
+  EDUCATIONAL
+  HISTORICAL
+  SUPERHERO
+  CUSTOM
+}
+
+enum VerificationMethod {
+  MSSP
+  WEBSITE_META_TAG
+  MANUAL_APPROVAL
+}
+
+enum ReportStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  REVIEW_HIDDEN
+  REVIEW_DELETED
+}
+
+enum ActivityEventType {
+  MUD_CREATED
+  REVIEW_POSTED
+  MUD_CLAIMED
+  MUD_UPDATED
+  STATUS_CHANGE
+  FEATURED
+}
+
+model User {
+  id                    String    @id @default(uuid())
+  email                 String    @unique
+  emailVerified         DateTime?
+  passwordHash          String?
+  displayName           String
+  avatarUrl             String?
+  bio                   String?
+  role                  UserRole  @default(PLAYER)
+  isProfilePublic       Boolean   @default(true)
+  showFavoritesPublicly Boolean   @default(true)
+  lockoutEnd            DateTime?
+  accessFailedCount     Int       @default(0)
+  lastLoginAt           DateTime?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  accounts        Account[]
+  reviews         Review[]
+  favorites       Favorite[]
+  mudAdmins       MudAdmin[]
+  reviewHelpfuls  ReviewHelpful[]
+  activityEvents  ActivityEvent[]
+  reviewReplies   ReviewReply[]
+  reviewReports   ReviewReport[]  @relation("Reporter")
+  resolvedReports ReviewReport[]  @relation("Resolver")
+  auditLogs       AuditLog[]
+  refreshTokens   RefreshToken[]
+  invitedAdmins   MudAdmin[]      @relation("InvitedBy")
+}
+
+model Account {
+  id                String  @id @default(uuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Mud {
+  id                  String    @id @default(uuid())
+  name                String
+  slug                String    @unique
+  description         String?   @db.Text
+  shortDescription    String?
+  connectionHost      String?
+  connectionPort      Int?
+  webClientUrl        String?
+  website             String?
+  discordUrl          String?
+  wikiUrl             String?
+  codebase            String?
+  language            String?
+  establishedDate     DateTime?
+  isOnline            Boolean   @default(false)
+  lastOnlineCheck     DateTime?
+  consecutiveFailures Int       @default(0)
+  currentMsspData     Json?
+  ratingAverage       Float     @default(0)
+  ratingCount         Int       @default(0)
+  isFeatured          Boolean   @default(false)
+  featuredOrder       Int?
+  featuredAt          DateTime?
+  trendingScore       Float     @default(0)
+  viewCount           Int       @default(0)
+  favoriteCount       Int       @default(0)
+  isDeleted           Boolean   @default(false)
+  deletedAt           DateTime?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  genres         MudGenre[]
+  reviews        Review[]
+  favorites      Favorite[]
+  admins         MudAdmin[]
+  statusHistory  MudStatus[]
+  activityEvents ActivityEvent[]
+
+  @@index([slug])
+  @@index([isOnline])
+  @@index([isFeatured])
+  @@index([trendingScore(sort: Desc)])
+  @@index([isDeleted, isOnline, trendingScore(sort: Desc)])
+}
+
+model MudGenre {
+  mudId String
+  genre Genre
+  mud   Mud    @relation(fields: [mudId], references: [id], onDelete: Cascade)
+
+  @@id([mudId, genre])
+  @@index([genre])
+}
+
+model Review {
+  id           String    @id @default(uuid())
+  mudId        String
+  userId       String
+  rating       Int
+  title        String?
+  body         String    @db.Text
+  helpfulCount Int       @default(0)
+  isHidden     Boolean   @default(false)
+  isDeleted    Boolean   @default(false)
+  deletedAt    DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  mud      Mud             @relation(fields: [mudId], references: [id], onDelete: Cascade)
+  user     User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  helpfuls ReviewHelpful[]
+  reply    ReviewReply?
+  reports  ReviewReport[]
+
+  @@unique([mudId, userId])
+  @@index([mudId])
+  @@index([userId])
+  @@index([rating])
+  @@index([helpfulCount(sort: Desc)])
+}
+
+model ReviewHelpful {
+  reviewId  String
+  userId    String
+  createdAt DateTime @default(now())
+
+  review Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([reviewId, userId])
+}
+
+model ReviewReply {
+  id          String   @id @default(uuid())
+  reviewId    String   @unique
+  adminUserId String
+  body        String   @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  review    Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  adminUser User   @relation(fields: [adminUserId], references: [id])
+}
+
+model ReviewReport {
+  id               String       @id @default(uuid())
+  reviewId         String
+  reporterId       String
+  reason           String
+  details          String?      @db.Text
+  status           ReportStatus @default(PENDING)
+  resolvedAt       DateTime?
+  resolvedByUserId String?
+  resolution       String?      @db.Text
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  review     Review @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  reporter   User   @relation("Reporter", fields: [reporterId], references: [id])
+  resolvedBy User?  @relation("Resolver", fields: [resolvedByUserId], references: [id])
+
+  @@index([status])
+}
+
+model Favorite {
+  userId    String
+  mudId     String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mud  Mud  @relation(fields: [mudId], references: [id], onDelete: Cascade)
+
+  @@id([userId, mudId])
+  @@index([createdAt])
+}
+
+model MudAdmin {
+  id                 String              @id @default(uuid())
+  mudId              String
+  userId             String
+  isOwner            Boolean             @default(false)
+  isVerified         Boolean             @default(false)
+  verificationCode   String?
+  verificationMethod VerificationMethod?
+  verifiedAt         DateTime?
+  invitedAt          DateTime?
+  invitedByUserId    String?
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+
+  mud       Mud   @relation(fields: [mudId], references: [id], onDelete: Cascade)
+  user      User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  invitedBy User? @relation("InvitedBy", fields: [invitedByUserId], references: [id])
+
+  @@unique([mudId, userId])
+  @@index([isVerified])
+}
+
+model MudStatus {
+  id           String   @id @default(uuid())
+  mudId        String
+  isOnline     Boolean
+  playerCount  Int?
+  uptime       BigInt?
+  msspDataJson Json?
+  checkedAt    DateTime @default(now())
+  createdAt    DateTime @default(now())
+
+  mud Mud @relation(fields: [mudId], references: [id], onDelete: Cascade)
+
+  @@index([checkedAt])
+  @@index([mudId, checkedAt])
+}
+
+model ActivityEvent {
+  id           String            @id @default(uuid())
+  type         ActivityEventType
+  userId       String?
+  mudId        String?
+  metadataJson Json?
+  description  String
+  createdAt    DateTime          @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  mud  Mud?  @relation(fields: [mudId], references: [id], onDelete: Cascade)
+
+  @@index([type])
+  @@index([createdAt])
+  @@index([mudId, createdAt])
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  action     String
+  userId     String
+  targetType String?
+  targetId   String?
+  details    Json?
+  ipAddress  String?
+  createdAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([action])
+  @@index([createdAt])
+  @@index([targetType, targetId])
+}
+
+model RefreshToken {
+  id              String    @id @default(uuid())
+  userId          String
+  token           String    @unique
+  expiresAt       DateTime
+  isRevoked       Boolean   @default(false)
+  revokedAt       DateTime?
+  replacedByToken String?
+  createdAt       DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([userId])
+  @@index([expiresAt])
+}
